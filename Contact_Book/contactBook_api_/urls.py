@@ -1,18 +1,15 @@
-from django.urls import path,include
-from .views import ContactViewset
-
+from django.urls import path
+from . import views
 from rest_framework import routers
-#from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
 
 router = routers.DefaultRouter()
 
-router.register(r'contactBook',ContactViewset)
-
 urlpatterns = [
-    path('',include(router.urls)),
-   
+      path('getContact/', views.GetViewset.as_view(),name='getcontact'),
+      path('postContact/',views.Postcontactviews.as_view(),name='createcontact'),
+      path('delete/<str:name>/',views.deletecontactviews.as_view(),name='deletecontact'),
+      path('update/<str:Name>/',views.updatecontactviews.as_view(),name='updatecontact'),
 
-  
 ]
